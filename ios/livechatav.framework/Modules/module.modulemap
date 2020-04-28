@@ -1,0 +1,11 @@
+framework module livechatav {
+  umbrella header "livechatav.h"
+
+  export *
+  module * { export * }
+}
+
+module livechatav.Swift {
+    header "livechatav-Swift.h"
+    requires objc
+}

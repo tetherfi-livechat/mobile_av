@@ -1,0 +1,34 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name livechatav
+import CallKit
+import Foundation
+import Swift
+@_exported import livechatav
+@objc public class Logger : ObjectiveC.NSObject {
+  public static var outputClosure: ((Swift.String) -> Swift.Void)
+  public static func SetOutCallback(method: @escaping (Swift.String) -> Swift.Void)
+  public init(name: Swift.String)
+  public func error(_ msg: Swift.String)
+  public func warn(_ msg: Swift.String)
+  public func info(_ msg: Swift.String)
+  public func debug(_ msg: Swift.String)
+  @objc public static func objc_log(time: Swift.String, type: Swift.String, currentSid: Swift.String, cls: Swift.String, msg: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class CkHandler : ObjectiveC.NSObject, CallKit.CXProviderDelegate {
+  @objc public static var Instance: livechatav.CkHandler
+  public static func getInstance() -> livechatav.CkHandler
+  @objc override dynamic public init()
+  @objc public func createNewCall(rtc: livechatav.RTCSession, isVideo: Swift.Bool) -> Foundation.UUID
+  @objc public func providerDidReset(_ provider: CallKit.CXProvider)
+  @objc public func providerDidBegin(_ provider: CallKit.CXProvider)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXStartCallAction)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXAnswerCallAction)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXEndCallAction)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXSetHeldCallAction)
+  @objc public func provider(_ provider: CallKit.CXProvider, perform action: CallKit.CXSetMutedCallAction)
+  @objc public func end(uuid: Foundation.UUID)
+  @objc deinit
+}
